@@ -36,10 +36,15 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
 
     var arrowOffsetX: CGFloat {
         switch config.side {
-        case .bottom, .center, .top, .leadingTop:
+        case .bottom, .center, .top:
             return 0
         case .leading:
             return (contentWidth / 2 + config.arrowHeight / 2)
+        case .leadingTop:
+            return (contentWidth / 2
+                - config.arrowHeight / 2
+                - config.borderRadius / 2
+                - config.borderWidth / 2)
         case .leadingBottom:
             return (contentWidth / 2
                 + config.arrowHeight / 2
@@ -81,7 +86,7 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
     private func offsetHorizontal(_ g: GeometryProxy) -> CGFloat {
         switch config.side {
         case .leadingTop:
-            return -(contentWidth + config.margin + animationOffset)
+            return -(contentWidth + config.margin + animationOffset - actualArrowHeight)
         case .leading, .leadingTop, .leadingBottom:
             return -(contentWidth + config.margin + actualArrowHeight + animationOffset)
         case .trailing, .trailingTop, .trailingBottom:
