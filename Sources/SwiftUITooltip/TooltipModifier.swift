@@ -85,7 +85,7 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
         case .trailing, .trailingTop, .trailingBottom:
             return g.size.width + config.margin + actualArrowHeight + animationOffset
         case .top:
-            return g.size.width/2 - contentWidth - 10
+            return g.size.width/2 - contentWidth
         case .center, .bottom:
             return (g.size.width - contentWidth) / 2
         }
