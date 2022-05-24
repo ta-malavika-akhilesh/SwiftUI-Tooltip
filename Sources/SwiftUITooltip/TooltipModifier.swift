@@ -39,7 +39,7 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
         case .bottom, .center:
             return 0
         case .top:
-            return (contentWidth / 2 - config.arrowHeight / 2)
+            return (contentWidth / 2 - config.arrowHeight / 2) - 20
         case .leading:
             return (contentWidth / 2 + config.arrowHeight / 2)
         case .leadingTop:
